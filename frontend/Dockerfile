@@ -2,9 +2,11 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-# 依存関係をコピーしてインストール
-COPY package.json package-lock.json ./
-RUN npm ci
+# package.jsonをコピー
+COPY package.json ./
+
+# 依存関係をインストール
+RUN npm install
 
 # アプリケーションコードをコピー
 COPY . .
